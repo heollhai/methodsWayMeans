@@ -1,0 +1,56 @@
+	.danxuanDuoxuan {
+		//单选（1）使用
+		.EventAreaClass {
+			display: flex;
+			width: 300px;
+			height: 0.74074rem;
+			text-align: center;
+			line-height: 40px;
+
+			>span {
+				flex: 1;
+			}
+		}
+
+		.clickColor {
+			background-color: #04b2bf;
+			border: 1px solid #fff;
+			color: #fff;
+		}
+
+		//单选（2）使用
+		.EventAreaClass2 {
+			display: flex;
+			width: 300px;
+			height: 0.74074rem;
+			text-align: center;
+			line-height: 40px;
+
+			>span {
+				flex: 1;
+			}
+		}
+		.clickColor2 {
+			background-color: forestgreen;
+			border: 1px solid #fff;
+			color: #fff;
+		}
+		
+		// 多选（3）使用
+		.EventAreaClass3 {
+			display: flex;
+			width: 300px;
+			height: 0.74074rem;
+			text-align: center;
+			line-height: 40px;
+		
+			>span {
+				flex: 1;
+			}
+		}
+		.clickColor3 {
+			background-color: red;
+			border: 1px solid #fff;
+			color: #fff;
+		}
+	}
