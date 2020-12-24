@@ -13,6 +13,7 @@
 		{{value}}
 		<div>我是vuex里面的count1{{cont1}}</div>
 		<div>我是vuex里面的evnBaseInfo :{{evnBaseInfo.eventName}}</div>
+		<div class="HomeImgClass"></div>
 	</div>
 </template>
 <script>
@@ -43,5 +44,9 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped="scoped">
+	.HomeImgClass{
+		width: 0.74074rem;height: 40px;
+		background: url("~@/assets/01.png");
+	}
 </style>

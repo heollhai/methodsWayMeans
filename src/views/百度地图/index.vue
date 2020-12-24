@@ -46,7 +46,7 @@
 </template>
  
 <script>
-	  import Img from "@/assets/da.png";
+	  import Img from "@/assets/xiao.jpg";
     export default {
         name: "demo",
         data: () => ({

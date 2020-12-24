@@ -5,6 +5,13 @@ import Home from '../views/home/index.vue'
 
 
 Vue.use(VueRouter)
+// 解决点击重复路由时报错
+const originalPush = VueRouter.prototype.push
+//修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
+
 
 const routes = [
   {//首页
@@ -108,6 +115,7 @@ const routes = [
    component: () => import(/* webpackChunkName: "chaChao" */ '../views/插槽使用/index.vue')
   },
 ]
+
 
 const router = new VueRouter({
   routes
