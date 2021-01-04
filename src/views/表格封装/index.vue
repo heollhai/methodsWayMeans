@@ -5,7 +5,7 @@
 				:list="dataGrid.list"					数据
 				:columns="dataGrid.columns" 			列属性
 				:operates="dataGrid.operates"			操作列
-				:pagination="dataGrid.pagination"		分页
+				:pagination="dataGrid.pagination"		分页  
 		 -->
 		<data-grid :options="dataGrid.options" :list="dataGrid.list" :columns="dataGrid.columns" :operates="dataGrid.operates"
 		 :pagination="dataGrid.pagination" />
