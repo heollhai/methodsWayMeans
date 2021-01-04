@@ -13,6 +13,9 @@
 		{{value}}
 		<div>我是vuex里面的count1{{cont1}}</div>
 		<div>我是vuex里面的evnBaseInfo :{{evnBaseInfo.eventName}}</div>
+		<template v-for="itme in datas">
+			{{itme}}---
+		</template>
 	</div>
 </template>
 <script>
@@ -26,6 +29,11 @@
 		mixins: [parent3,parent2],
 		data(){
 			return{
+				datas:{
+					a:"1",
+					b:"2",
+					c:"3",
+				},
 				sayHello:'我继承父组件，，改变父组件的值'
 			}
 		},
@@ -37,6 +45,24 @@
 		},
 		created(){
 			this.showMessage(9);
+			let data = {
+					a:1,
+					b:2,
+					c:3
+			}
+			let List = [1,2,9,4,5,6,7,8];
+			for(var i in data){
+				console.log(i);
+			}
+			// for(var x of data){
+			// 	console.log(x);
+			// }
+			for(var i in List){
+				console.log(i,"i");
+			}
+			for(var i of List){
+				console.log(i,"iiiii")
+			}
 			console.log(this.value,'我是混入进来的值');
 		},
 	

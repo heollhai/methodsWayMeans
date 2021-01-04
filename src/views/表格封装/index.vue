@@ -1,5 +1,5 @@
 <template>
-	<div style="height: calc(100% - 92px);">
+	<div style="height: calc(100% - 132px);">
 		<!-- 
 				:options="dataGrid.options"  			全局属性
 				:list="dataGrid.list"					数据
@@ -78,7 +78,7 @@
 					operates: {
 						label: "操作",
 						// 操作列宽度
-						width: "160px",
+						width: "100px",
 						// 操作列是否隐藏
 						hidden: false,
 						// 操作列的具体按钮
@@ -87,6 +87,18 @@
 							hidden: false,
 							method: (index,scope) => {
 								this.showEvnInfo(scope.row);
+							},
+						},{
+							label: "编辑",
+							hidden: false,
+							method: (index,scope) => {
+								console.log('点击了编辑',scope);
+							},
+						},{
+							label: "查看",
+							hidden: false,
+							method: (index,scope) => {
+								console.log('点击了查看',scope);
 							},
 						}],
 					},
