@@ -1,5 +1,5 @@
 <template>
-	<div>我是定制行
+	<div>我是定制行yisiyisi
 	  <el-form
 	    ref="gudBaseInfoForm"
 	    :model="baseInfo"
@@ -52,11 +52,11 @@
         return this.$confirm(`确定移除 ${ file.name }？`);
       },
 	  imageChange(){
-		  
+
 	  },
     }
-	   
-	    
+
+
  }
 </script>
 
