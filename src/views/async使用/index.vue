@@ -10,7 +10,7 @@
 			方法3 是先执行了   一个定时器，，后面再执行了axios去拿数据，，然后在吧值赋值给了  
 			 this.names  在打印结果，，，一切正常；
 		 -->
-		<el-button @click="fun3">第三种点我先去拿数据 在 赋值给下一位</el-button>
+		<el-button @click="fun3">第三种点我先去拿数据 在 赋值给下一位12</el-button>
 	</div>
 
 </template>
