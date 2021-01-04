@@ -1,5 +1,5 @@
 <template>
-	<div>我是定制行yisiyisi
+	<div>我是定制行测试版本回退
 	  <el-form
 	    ref="gudBaseInfoForm"
 	    :model="baseInfo"
