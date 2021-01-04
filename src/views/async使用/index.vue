@@ -4,7 +4,7 @@
 		<el-button @click="ceshi2">点击console.log看结果 方法1使用</el-button>
 		<div>我第一执行 {{fun1}} 我第二执行 {{fun1_1}} 我第三执行 {{fun1_2}}</div>
 
-		<el-button @click="shiyongFun2">第二种点我先去拿数据 在 赋值给下一位</el-button>
+		<el-button @click="shiyongFun2">第二种点我先去拿数据 在 赋值给下一位</el-button> 
 		
 		<!-- 
 			方法3 是先执行了   一个定时器，，后面再执行了axios去拿数据，，然后在吧值赋值给了  
