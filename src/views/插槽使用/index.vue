@@ -6,7 +6,7 @@
 		</children-slot>
 		<childrentSlota :data = "data">
 			<template slot = "actionScope" slot-scope = "data">
-			我是作用域插槽里面的数据:{{data.data}}
+			我是作用域插槽里面的数据:{{data.data}} 
 			</template>
 		</childrentSlota>
 	</div>
