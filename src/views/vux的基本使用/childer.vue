@@ -37,9 +37,9 @@
 		},
 		mounted() {
 			// this.$set(this.items,0,{message:'first',id:'4'}) //$set 可以触发更新视图
-			
-			this.$set(this.items[0],"message","新值") //$set 可以触发更新视图
-			console.log(this.items,this.data,'this.data.');
+
+			this.$set(this.items[0], "message", "新值") //$set 可以触发更新视图
+			console.log(this.items, this.data, 'this.data.');
 		},
 		methods: {
 			...mapMutations(["ADDCOUNT"]),
@@ -59,11 +59,19 @@
 						content: 'my name is test'
 					}
 				},
-				items: [
-					{ message: "one", id: "1" },
-					{ message: "two", id: "2" },
-					{ message: "three", id: "3" }
-			  ]
+				items: [{
+						message: "one",
+						id: "1"
+					},
+					{
+						message: "two",
+						id: "2"
+					},
+					{
+						message: "three",
+						id: "3"
+					}
+				]
 			}
 		}
 	}

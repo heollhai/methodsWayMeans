@@ -7,13 +7,13 @@
 </template>
 
 <script>
-	export default{
-		name:"tankuan",
-		props:["eventInfo"],
-		data(){
-			return{
-				froms:{
-					name:''
+	export default {
+		name: "tankuan",
+		props: ["eventInfo"],
+		data() {
+			return {
+				froms: {
+					name: ''
 				}
 			}
 		},
@@ -23,30 +23,30 @@
 		// 		deep: true
 		// 	}
 		// },
-		mounted(){
+		mounted() {
 			this.giabian()
 		},
-		methods:{
-			giabian(){
-				console.log(this.eventInfo,'eventInfo')
-				if(this.eventInfo.name%2==0){
+		methods: {
+			giabian() {
+				console.log(this.eventInfo, 'eventInfo')
+				if (this.eventInfo.name % 2 == 0) {
 					this.froms.name = 'wo chulail'
 					console.log('我是偶数')
-				}else{
+				} else {
 					this.froms.name = 'heh'
 				}
 			},
-			fuzujian(){
+			fuzujian() {
 				this.$parent.$parent.$data
-				console.log(this.$parent.$parent.$data2,'				console.log(this.$parent)')
+				console.log(this.$parent.$parent.$data2, '				console.log(this.$parent)')
 				// this.$parent.$parent.naname();
 			},
-			dialog(){
+			dialog() {
 				this.$parent.$parent.$data.evnReadDialog = false;
 				this.$parent.$parent.refresh()
-				console.log(this.$parent.$parent,'data')
+				console.log(this.$parent.$parent, 'data')
 			},
-			datass(){
+			datass() {
 				this.$parent.$parent.datass()
 			}
 		}

@@ -59,7 +59,7 @@
 			setTiomeFun(){
 				return new Promise((resolve,reject)=>{
 					setTimeout(()=>{
-						resolve(console.log('我先执行，，在拿值setTiomeFun2里面的值'))
+						resolve(console.log('我先执行，，在拿值setTiomeFun2里面的值'));
 					},3000)
 				})
 			},

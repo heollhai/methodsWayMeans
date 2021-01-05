@@ -25,16 +25,15 @@
 		created() {
 			this.biaoGeList();
 		},
-		mounted() {
-		},
-		methods:{
-			showEvnInfo(scope){
+		mounted() {},
+		methods: {
+			showEvnInfo(scope) {
 				this.biaoGeList();
-				console.log(scope,'kkkkk');
+				console.log(scope, 'kkkkk');
 			},
-			biaoGeList(){
+			biaoGeList() {
 				biaoGe().then(res => {
-					this.dataGrid.list  = [];
+					this.dataGrid.list = [];
 					this.dataGrid.list = res.data;
 					this.dataGrid.pagination.total = this.dataGrid.list.length;
 				})
@@ -61,13 +60,13 @@
 						label: "姓名",
 						prop: "name",
 						width: "100px"
-					},{
+					}, {
 						align: "center",
 						hidden: false,
 						label: "时间",
 						prop: "date",
 						width: "100px"
-					},{
+					}, {
 						align: "center",
 						hidden: false,
 						label: "地址",
@@ -85,20 +84,20 @@
 						list: [{
 							label: "详情",
 							hidden: false,
-							method: (index,scope) => {
+							method: (index, scope) => {
 								this.showEvnInfo(scope.row);
 							},
-						},{
+						}, {
 							label: "编辑",
 							hidden: false,
-							method: (index,scope) => {
-								console.log('点击了编辑',scope);
+							method: (index, scope) => {
+								console.log('点击了编辑', scope);
 							},
-						},{
+						}, {
 							label: "查看",
 							hidden: false,
-							method: (index,scope) => {
-								console.log('点击了查看',scope);
+							method: (index, scope) => {
+								console.log('点击了查看', scope);
 							},
 						}],
 					},

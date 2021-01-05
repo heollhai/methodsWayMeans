@@ -3,7 +3,7 @@
 		<vue-ueditor-wrap class="ueditorBox" v-model="msg" :config="myConfig"></vue-ueditor-wrap>
 		<el-button @click='dianji'>内容</el-button>
 	</div>
-	
+
 </template>
 <script>
 	import VueUeditorWrap from 'vue-ueditor-wrap'
@@ -27,9 +27,9 @@
 				}
 			}
 		},
-		methods:{
-			dianji(){
-				console.log('msg',this.msg)
+		methods: {
+			dianji() {
+				console.log('msg', this.msg)
 			}
 		}
 	};

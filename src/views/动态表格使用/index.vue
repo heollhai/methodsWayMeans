@@ -100,13 +100,13 @@
 				return value;
 			},
 		},
-		computed:{
-			mapState(){
-				
+		computed: {
+			mapState() {
+
 			}
 		},
 		created() {
-			console.log(store,this.$store,'store');
+			console.log(store, this.$store, 'store');
 			this.dataconfig = JSON.parse(sessionStorage.getItem('data'))
 			// console.log(aa)
 		},

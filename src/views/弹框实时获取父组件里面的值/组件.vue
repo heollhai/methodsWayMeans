@@ -1,4 +1,3 @@
-
 <!-- 
 
 	如果数据不能及时更新  解决方法  
@@ -27,21 +26,21 @@
 		created() {
 			// console.log(this.data,this.ceshidata, '0klddddddddddddd');
 		},
-		computed:{
-			datas:function(){
+		computed: {
+			datas: function() {
 				this.funDiaoYong(this.data.id);
 			},
-			dataa:function(){
-				console.log(this.data.id,'this.data.id00000000000000000000000000000o;');
-				
+			dataa: function() {
+				console.log(this.data.id, 'this.data.id00000000000000000000000000000o;');
+
 			}
 		},
-		watch:{
-			datas:function(){},//监听计算里面的变化
-			dataa:function(){}
+		watch: {
+			datas: function() {}, //监听计算里面的变化
+			dataa: function() {}
 		},
 		mounted() {
-			
+
 		},
 		props: {
 			data: {
@@ -52,7 +51,7 @@
 		data() {
 			return {
 				whetherNeedType: false,
-				ceshidata:'',
+				ceshidata: '',
 			}
 		},
 		methods: {
@@ -60,8 +59,8 @@
 			ensureClick() {
 
 			},
-			funDiaoYong(id){
-				console.log(id,'我是新来的id');
+			funDiaoYong(id) {
+				console.log(id, '我是新来的id');
 			}
 		}
 	}

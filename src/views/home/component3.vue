@@ -5,15 +5,15 @@
 </template>
 
 <script>
-	export default{
-		name:'hunRu2',
-		data(){
-			return{
-				value:'混入2里面的值'
+	export default {
+		name: 'hunRu2',
+		data() {
+			return {
+				value: '混入2里面的值'
 			}
 		},
-		methods:{
-			hunruFunction(){
+		methods: {
+			hunruFunction() {
 				console.log('我是混入2里面的方法');
 			}
 		}

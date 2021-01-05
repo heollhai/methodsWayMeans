@@ -6,14 +6,14 @@
 		</header>
 		底部:
 		<footer>
-			<slot name = "footer"></slot>
+			<slot name="footer"></slot>
 		</footer>
 	</div>
 </template>
 
 <script>
-	export default{
-		name:'slotChildren'
+	export default {
+		name: 'slotChildren'
 	}
 </script>
 

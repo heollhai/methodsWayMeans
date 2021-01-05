@@ -9,14 +9,8 @@
 		   结果就是   从第0位开始切割 到底10为结束）
 		  -->
 		<el-table ref="multipleTable" :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)" tooltip-effect="dark"
-		 style="width: 100%" 
-		 :row-class-name="tableRowClassName"   
-		 :row-style="listTableRow" 
-		 :header-cell-style="listTableHeader"
-		 :cell-style="listTableCell"
-		 :height = "height"
-		 :highlight-current-row="highlightCurrentRow"
-		 >
+		 style="width: 100%" :row-class-name="tableRowClassName" :row-style="listTableRow" :header-cell-style="listTableHeader"
+		 :cell-style="listTableCell" :height="height" :highlight-current-row="highlightCurrentRow">
 			<el-table-column type="selection" width="55">
 			</el-table-column>
 			<el-table-column prop="name" label="姓名" width="120">
@@ -44,24 +38,35 @@
 	</div>
 </template>
 <script>
-	import { againsTsortKey } from '@/components/公共方法'
+	import {
+		againsTsortKey
+	} from '@/components/公共方法'
 	export default {
 		name: "dataList",
 		mounted() {
-			let bb = [1,2,3,4];
-			let dd = {a:'1'}
+			let bb = [1, 2, 3, 4];
+			let dd = {
+				a: '1'
+			}
 			let cv = bb && 3;
-			
-			console.log(Array.isArray(dd),'c',Object.prototype.toString.call(dd));
-			
-			let aa = [
-				{a:'1'},
-				{a:'2'},
-				{a:'4'},
-				{a:'3'}
+
+			console.log(Array.isArray(dd), 'c', Object.prototype.toString.call(dd));
+
+			let aa = [{
+					a: '1'
+				},
+				{
+					a: '2'
+				},
+				{
+					a: '4'
+				},
+				{
+					a: '3'
+				}
 			]
-			let b = JSON.parse(JSON.stringify(againsTsortKey(aa,'a')));
-			let a = [1,2,3,4]
+			let b = JSON.parse(JSON.stringify(againsTsortKey(aa, 'a')));
+			let a = [1, 2, 3, 4]
 			//循环给表格30条数据
 			let value = {};
 			for (var i = 0; i < 31; i++) {
@@ -77,12 +82,12 @@
 		},
 		data() {
 			return {
-				height:"calc(100% - 40px)",
+				height: "calc(100% - 40px)",
 				currentPage: 1, //当前页数
 				pagesize: 4, //当前分页显示多少数量
 				tableData: [], //表格数据
 				multipleSelection: [],
-				highlightCurrentRow:true,
+				highlightCurrentRow: true,
 			}
 		},
 		methods: {
@@ -95,21 +100,21 @@
 			mounted: function() {
 				this.addUser();
 			},
-			listTableCell(){
+			listTableCell() {
 				return '';
 			},
-			tableRowClassName(){
+			tableRowClassName() {
 				return '';
 			},
-			listTableRow(){
+			listTableRow() {
 				return `
 					height:400px;color:red;
 				`;
 			},
-			listTableHeader(){
+			listTableHeader() {
 				return '';
 			},
-			
+
 		},
 	}
 </script>

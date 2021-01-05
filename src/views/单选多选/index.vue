@@ -81,9 +81,9 @@
 				}
 				if (this.spanIndex2 == -1) {
 					this.form2.area = '';
-				}else{
+				} else {
 					this.list2.forEach((ele, index) => {
-						if(index === this.spanIndex2){
+						if (index === this.spanIndex2) {
 							this.form2.area = ele;
 						}
 					})

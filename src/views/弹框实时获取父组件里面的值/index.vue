@@ -16,9 +16,9 @@
 				</template>
 			</el-table-column>
 		</el-table>
-		
-		
-		<el-dialog  close-on-click="false" title="修改" style="top: 24%;" :visible.sync="whetherNeedType" :close-on-click-modal="false"
+
+
+		<el-dialog close-on-click="false" title="修改" style="top: 24%;" :visible.sync="whetherNeedType" :close-on-click-modal="false"
 		 class="dialog1">
 			<zujia ref="zujian" :data="data" />
 			<div class="whetherNeedTypeClass">
@@ -38,25 +38,25 @@
 		},
 		data() {
 			return {
-				whetherNeedType:false,
+				whetherNeedType: false,
 				data: {},
 				tableData: [{
-					"id":"1",
+					"id": "1",
 					"date": "12016-05-02",
 					"name": "1王小虎",
 					"address": "1上海市普陀区金沙江路 1518 弄"
 				}, {
-					"id":"2",
+					"id": "2",
 					"date": "2 2016-05-04",
 					"name": "2 王小虎",
 					"address": "2上海市普陀区金沙江路 1517 弄"
 				}, {
-					"id":"3",
+					"id": "3",
 					"date": "3 2016-05-01",
 					"name": "3 王小虎",
 					"address": "3上海市普陀区金沙江路 1519 弄"
 				}, {
-					"id":"4",
+					"id": "4",
 					"date": "4 2016-05-03",
 					"name": "4王小虎",
 					"address": "4上海市普陀区金沙江路 1516 弄"
@@ -66,13 +66,13 @@
 		methods: {
 			//弹框确定
 			ensureClick() {
-			
+
 			},
 			deleteRow(index, rows) {
 				this.whetherNeedType = true;
 				this.data = rows;
-				if(this.$refs.zujian !==  undefined){
-					console.log(this.$refs.zujian.funDiaoYong(),"klklklk")
+				if (this.$refs.zujian !== undefined) {
+					console.log(this.$refs.zujian.funDiaoYong(), "klklklk")
 				}
 			},
 
