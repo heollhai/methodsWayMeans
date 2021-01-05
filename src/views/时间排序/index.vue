@@ -3,11 +3,13 @@
 </template>
 
 <script>
-	import {quanJu} from '@/components/pubilcMethod'
+	import {
+		quanJu
+	} from '@/components/pubilcMethod'
 	export default {
 		name: "paixu",
 		data() {
-			return{
+			return {
 				tiem: []
 			}
 		},
@@ -21,31 +23,31 @@
 				});
 			},
 		},
-		mounted:{
+		mounted: {
 			this.tiem.push({
-			  eventName: 'ssss',
-			  evevStatue: "未处置",
-			  occurrenceTime: '2020-11-15 15:10:33.0'
+				eventName: 'ssss',
+				evevStatue: "未处置",
+				occurrenceTime: '2020-11-15 15:10:33.0'
 			}, {
-			  eventName: 'ssss',
-			  evevStatue: "未处置",
-			  occurrenceTime: '2020-11-08 15:10:33.0'
+				eventName: 'ssss',
+				evevStatue: "未处置",
+				occurrenceTime: '2020-11-08 15:10:33.0'
 			}, {
-			  eventName: 'ssss',
-			  evevStatue: "未处置",
-			  occurrenceTime: '2020-12-10 15:10:33.0'
+				eventName: 'ssss',
+				evevStatue: "未处置",
+				occurrenceTime: '2020-12-10 15:10:33.0'
 			}, {
-			  eventName: 'ssss',
-			  evevStatue: "未处置",
-			  occurrenceTime: '2020-11-09 15:10:33.0'
+				eventName: 'ssss',
+				evevStatue: "未处置",
+				occurrenceTime: '2020-11-09 15:10:33.0'
 			}, {
-			  eventName: 'ssss',
-			  evevStatue: "未处置",
-			  occurrenceTime: '2020-11-09 14:10:33.0'
+				eventName: 'ssss',
+				evevStatue: "未处置",
+				occurrenceTime: '2020-11-09 14:10:33.0'
 			}, {
-			  eventName: 'ssss',
-			  evevStatue: "未处置",
-			  occurrenceTime: '2020-10-01 14:10:32.0'
+				eventName: 'ssss',
+				evevStatue: "未处置",
+				occurrenceTime: '2020-10-01 14:10:32.0'
 			}),
 			this.sortKey(this.tiem, "occurrenceTime");
 		}

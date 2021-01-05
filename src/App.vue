@@ -26,11 +26,11 @@
 			}
 		},
 		watch: {
-			
+
 		},
 		created() {
 			routers().then(res => {
-				console.log(res,'res');
+				console.log(res, 'res');
 				this.options = res.data;
 			})
 		},
@@ -108,7 +108,7 @@
 		box-shadow: 10px 10px 5px #888888;
 		margin-top: 30px;
 		margin-bottom: 30px;
-		
+
 	}
 
 	// #nav{
