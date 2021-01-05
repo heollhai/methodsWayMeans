@@ -34,7 +34,7 @@ function generateArray(table) {
                 colspan = colspan || 1;
                 ranges.push({ s: { r: R, c: outRow.length }, e: { r: R + rowspan - 1, c: outRow.length + colspan - 1 } });
             }
-            ;
+
 
             //Handle Value
             outRow.push(cellValue !== "" ? cellValue : null);
@@ -45,7 +45,7 @@ function generateArray(table) {
         out.push(outRow);
     }
     return [out, ranges];
-};
+}
 
 function datenum(v, date1904) {
     if (date1904) v += 1462;
