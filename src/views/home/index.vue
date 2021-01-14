@@ -6,6 +6,7 @@
  -->
 
 <template>
+<<<<<<< HEAD
   <div>
     {{ sayHello }}
     <el-button @click="secondFunction(9)">调用混入里面的方法</el-button>
@@ -66,3 +67,77 @@ export default {
 </script>
 
 <style></style>
+=======
+	<div>
+		{{sayHello}}
+		<el-button @click="secondFunction(9)">调用混入里面的方法</el-button>
+		{{value}}
+		<div>我是vuex里面的count1{{cont1}}</div>
+		<div>我是vuex里面的evnBaseInfo :{{evnBaseInfo.eventName}}</div>
+<<<<<<< HEAD
+		<div class="HomeImgClass"></div>
+=======
+		<template v-for="itme in datas">
+			{{itme}}---
+		</template>
+>>>>>>> 4809e4a32da569aa91fcdf81780dee1b76b4df73
+	</div>
+</template>
+<script>
+	import { mapState } from "vuex";
+	import parent2 from './component2.vue';
+	import parent3 from './component3.vue';
+	import parent from './component.vue';
+	export default{
+		name:'homeUse',
+		extends:parent,
+		mixins: [parent3,parent2],
+		data(){
+			return{
+				datas:{
+					a:"1",
+					b:"2",
+					c:"3",
+				},
+				sayHello:'我继承父组件，，改变父组件的值'
+			}
+		},
+		computed:{
+			...mapState({
+				cont1:state=>state.evn.count1
+			}),
+			...mapState("evn1",["evnBaseInfo"])
+		},
+		created(){
+			this.showMessage(9);
+			let data = {
+					a:1,
+					b:2,
+					c:3
+			}
+			let List = [1,2,9,4,5,6,7,8];
+			for(var i in data){
+				console.log(i);
+			}
+			// for(var x of data){
+			// 	console.log(x);
+			// }
+			for(var i in List){
+				console.log(i,"i");
+			}
+			for(var i of List){
+				console.log(i,"iiiii")
+			}
+			console.log(this.value,'我是混入进来的值');
+		},
+	
+	}
+</script>
+
+<style lang="scss" scoped="scoped">
+	.HomeImgClass{
+		width: 0.74074rem;height: 40px;
+		background: url("~@/assets/01.png");
+	}
+</style>
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5

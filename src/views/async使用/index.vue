@@ -6,6 +6,7 @@
       我第一执行 {{ fun1 }} 我第二执行 {{ fun1_1 }} 我第三执行 {{ fun1_2 }}
     </div>
 
+<<<<<<< HEAD
     <el-button @click="shiyongFun2"
       >第二种点我先去拿数据 在 赋值给下一位</el-button
     >
@@ -18,6 +19,18 @@
     <el-button @click="fun3">第三种点我先去拿数据 在 赋值给下一位</el-button>
     测试版本回退
   </div>
+=======
+		<el-button @click="shiyongFun2">第二种点我先去拿数据 在 赋值给下一位</el-button> 
+		
+		<!-- 
+			方法3 是先执行了   一个定时器，，后面再执行了axios去拿数据，，然后在吧值赋值给了  
+			 this.names  在打印结果，，，一切正常；
+		 -->
+		 我是dev分支里面修改的内容
+		<el-button @click="fun3">第三种点我先去拿数据 在 赋值给下一位12</el-button>
+	</div>
+
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5
 </template>
 
 <script>

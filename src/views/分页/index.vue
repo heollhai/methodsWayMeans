@@ -1,6 +1,11 @@
 <template>
+<<<<<<< HEAD
   <div style="height: calc(100% - 130px);">
     <!-- currentPage 页码 
+=======
+	<div style="height: calc(100% - 130px);">
+		<!-- currentPage 页码 
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5
 		  pagesize每页显示数量
 		  
 		  tableData.slice((currentPage-1)*pagesize,currentPage*pagesize
@@ -8,6 +13,7 @@
 		  （目前第一页数据就是   (1-1)*10,1*10   
 		   结果就是   从第0位开始切割 到底10为结束）
 		  -->
+<<<<<<< HEAD
     <el-table
       ref="multipleTable"
       :data="
@@ -39,6 +45,31 @@
       </el-table-column>
     </el-table>
     <!-- 
+=======
+		<el-table ref="multipleTable" :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)" tooltip-effect="dark"
+		 style="width: 100%" 
+		 :row-class-name="tableRowClassName"   
+		 :row-style="listTableRow" 
+		 :header-cell-style="listTableHeader"
+		 :cell-style="listTableCell"
+		 :height = "height"
+		 :highlight-current-row="highlightCurrentRow"
+		 >
+			<el-table-column type="selection" width="55">
+			</el-table-column>
+			<el-table-column prop="name" label="姓名" width="120">
+			</el-table-column>
+			<el-table-column label="操作" align="right">
+				<template slot-scope="scope">
+					<el-button size="mini" @click="handleEdit(scope.$index, scope.row)">修改
+					</el-button>
+					<el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除
+					</el-button>
+				</template>
+			</el-table-column>
+		</el-table>
+		<!-- 
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5
 		 @current-change    改变现在是第几页
 		 @size-change 	 	改变现在一页有多少
 		 :current-page     	现在第几页
@@ -60,6 +91,7 @@
   </div>
 </template>
 <script>
+<<<<<<< HEAD
 import { againsTsortKey } from "@/components/公共方法";
 export default {
   name: "dataList",
@@ -134,6 +166,67 @@ export default {
     },
     listTableRow() {
       return `
+=======
+	import { againsTsortKey } from '@/components/公共方法'
+	export default {
+		name: "dataList",
+		mounted() {
+			let bb = [1,2,3,4];
+			let dd = {a:'1'}
+			let cv = bb && 3;
+			
+			console.log(Array.isArray(dd),'c',Object.prototype.toString.call(dd));
+			
+			let aa = [
+				{a:'1'},
+				{a:'2'},
+				{a:'4'},
+				{a:'3'}
+			]
+			let b = JSON.parse(JSON.stringify(againsTsortKey(aa,'a')));
+			let a = [1,2,3,4]
+			//循环给表格30条数据
+			let value = {};
+			for (var i = 0; i < 31; i++) {
+				value = {
+					date: '2016-05-02',
+					name: '王小虎',
+					address: '上海市普陀区金沙江路 1518 弄'
+				}
+				this.tableData.push(value)
+			}
+			console.log(this.tableData.slice((this.currentPage - 1) * this.pagesize, this.currentPage * this.pagesize),
+				'tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)')
+		},
+		data() {
+			return {
+				height:"calc(100% - 40px)",
+				currentPage: 1, //当前页数
+				pagesize: 4, //当前分页显示多少数量
+				tableData: [], //表格数据
+				multipleSelection: [],
+				highlightCurrentRow:true,
+			}
+		},
+		methods: {
+			handleSizeChange(val) {
+				this.pagesize = val;
+			},
+			current_change: function(currentPage) {
+				this.currentPage = currentPage;
+			},
+			mounted: function() {
+				this.addUser();
+			},
+			listTableCell(){
+				return '';
+			},
+			tableRowClassName(){
+				return '';
+			},
+			listTableRow(){
+				return `
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5
 					height:400px;color:red;
 				`;
     },

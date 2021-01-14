@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <children-slot>
       <div slot="header">在具名插槽头部</div>
@@ -10,6 +11,19 @@
       </template>
     </childrentSlota>
   </div>
+=======
+	<div>
+		<children-slot>
+			<div slot="header">在具名插槽头部</div>
+			<div slot="footer">在具名插槽底部</div>			
+		</children-slot>
+		<childrentSlota :data = "data">
+			<template slot = "actionScope" slot-scope = "data">
+			我是作用域插槽里面的数据:{{data.data}} 
+			</template>
+		</childrentSlota>
+	</div>
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5
 </template>
 
 <script>
