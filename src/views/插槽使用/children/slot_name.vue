@@ -1,11 +1,9 @@
 <template>
-	<div>
-		具名插槽
-	</div>
+  <div>
+    具名插槽
+  </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
-<style>
-</style>
+<style></style>
