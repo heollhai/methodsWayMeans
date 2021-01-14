@@ -1,0 +1,72 @@
+{
+  "id": "2313319",
+  "name": "vue-manage-system",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1026172",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "1447730",
+      "name": "页面",
+      "font_class": "yemian",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "8165727",
+      "name": "用户",
+      "font_class": "yonghu1",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "16194673",
+      "name": "页面",
+      "font_class": "yemian1",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "17759556",
+      "name": "其他",
+      "font_class": "qita",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "2513048",
+      "name": "BAI-视屏",
+      "font_class": "BAI-shiping",
+      "unicode": "e6c3",
+      "unicode_decimal": 59075
+    },
+    {
+      "icon_id": "3040366",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e6d5",
+      "unicode_decimal": 59093
+    },
+    {
+      "icon_id": "14469867",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "19260632",
+      "name": "123",
+      "font_class": "123",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
