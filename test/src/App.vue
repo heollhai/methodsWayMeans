@@ -14,7 +14,7 @@
       </div>
     </el-dialog>
     <div id="nav">
-      <el-button @click="BoxType = true">打开菜单</el-button>
+      <el-button @click="BoxType = true">打 开 菜 单</el-button>
     </div>
     <keep-alive include="keepAliveUse">
       <router-view v-if="isRouterAlive"></router-view>
