@@ -74,6 +74,43 @@
     <img :src="Img" alt="" />
   </div>
 </template>
+<<<<<<< HEAD
+=======
+ 
+<script>
+	  import Img from "@/assets/xiao.jpg";
+    export default {
+        name: "demo",
+        data: () => ({
+			Img:Img,
+            map:{
+                center: {lng: 113.057224, lat: 22.634922},
+                zoom: 16,
+                show: true,
+                dragging: true
+            },
+			postionMap:{  //地图坐标
+				lng: 113.057224,
+				lat: 22.634922
+			},
+			show: false,
+			location: '',
+			keyword:'',
+			address:'',   //位置详细信息
+			  add:{
+				siteName:'',
+				site:'',
+				jd:'',
+				wd:'',
+				desce:'',
+				type:'',
+				jgName:'',
+				jgNum:'',
+			  },
+			  organizationData:[],
+			  jgName:'',
+			  jgNum:'',
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5
 
 <script>
 import Img from "@/assets/da.png";

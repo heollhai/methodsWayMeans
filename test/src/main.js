@@ -6,7 +6,7 @@ import "normalize.css";
 import "lib-flexible";
 
 import BaiduMap from "vue-baidu-map";
-import { addCookie, getCookie, delCookie } from "@/utils/cookie"
+import { addCookie, getCookie, delCookie } from "@/utils/cookie";
 Vue.prototype.$cookieStore = {
   addCookie,
   getCookie,

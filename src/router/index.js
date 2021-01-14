@@ -3,7 +3,19 @@ import VueRouter from "vue-router";
 // import Home from '../views/Home.vue'
 import Home from "../views/home/index.vue";
 
+<<<<<<< HEAD
 Vue.use(VueRouter);
+=======
+
+Vue.use(VueRouter)
+// 解决点击重复路由时报错
+const originalPush = VueRouter.prototype.push
+//修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
+
+>>>>>>> 9459bc3695be579e7cfb45dc906c2c37b0ec24a5
 
 const routes = [
   {
@@ -170,6 +182,7 @@ const routes = [
       import(/* webpackChunkName: "chaChao" */ "../views/插槽使用/index.vue")
   }
 ];
+
 
 const router = new VueRouter({
   routes
