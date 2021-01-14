@@ -22,13 +22,6 @@ export function biaoGe() {
     method: "get"
   });
 }
-//获取路由
-export function routers() {
-  return request({
-    url: "/options",
-    method: "get"
-  });
-}
 // //轮播
 // export function SwiperList(){
 //  return request({

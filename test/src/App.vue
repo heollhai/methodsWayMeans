@@ -9,18 +9,19 @@
           :class="{ clickColor: spanIndex === key }"
           @click="pathClick(item.path, key)"
         >
-          {{ item.name }}
+          {{ item.meat.name }}
         </div>
       </div>
     </el-dialog>
     <div id="nav">
       <el-button @click="BoxType = true">打开菜单</el-button>
     </div>
-    <router-view v-if="isRouterAlive"></router-view>
+    <keep-alive include="keepAliveUse">
+      <router-view v-if="isRouterAlive"></router-view>
+    </keep-alive>
   </div>
 </template>
 <script>
-import { routers } from "@/utils/api";
 export default {
   name: "App",
   provide() {
@@ -30,10 +31,7 @@ export default {
   },
   watch: {},
   created() {
-    routers().then(res => {
-      console.log(res, "res");
-      this.options = res.data;
-    });
+    this.options = this.$router.options.routes;
   },
   data() {
     return {
@@ -45,7 +43,6 @@ export default {
     };
   },
   mounted() {
-    // let height = document.querySelector("")
     console.log(document.querySelector("#nav").offsetHeight, "lllll");
     console.log(document.body.offsetHeight, "kkk");
   },
