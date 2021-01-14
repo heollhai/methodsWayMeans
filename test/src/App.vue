@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      spanIndex: -1, //单选（1） 使用
+      spanIndex: -1, //单选（1）  使用
       BoxType: false,
       value: "",
       options: [],
