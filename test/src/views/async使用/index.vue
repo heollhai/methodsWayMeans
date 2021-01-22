@@ -1,6 +1,6 @@
 <template>
   <div>
-    async使用 （1）:
+   <!-- async使用 （1）:
     <el-button @click="ceshi2">点击console.log看结果 方法1使用</el-button>
     <div>
       我第一执行 {{ fun1 }} 我第二执行 {{ fun1_1 }} 我第三执行 {{ fun1_2 }}
@@ -8,19 +8,19 @@
 
     <el-button @click="shiyongFun2"
       >第二种点我先去拿数据 在 赋值给下一位</el-button
-    >
+    > -->
 
     <!--
 			方法3 是先执行了   一个定时器，，后面再执行了axios去拿数据，，然后在吧值赋值给了
 			 this.names  在打印结果，，，一切正常；
 		 -->
-    提交到主分支 我修改了主分支里面的内容 等下测试冲突用1我在改一下
+   <!-- 提交到主分支 我修改了主分支里面的内容 等下测试冲突用1我在改一下
     <el-button @click="fun3">第三种点我先去拿数据 在 赋值给下一位</el-button>
-    测试版本回退
+    测试版本回退 -->
   </div>
 </template>
 
-<script>
+<!-- <script>
 import { comments, liandong } from "@/utils/api";
 export default {
   name: "async",
@@ -57,14 +57,14 @@ export default {
   methods: {
     //使用方法 3:
     setTiomeFun() {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         setTimeout(() => {
           resolve(console.log("我先执行，，在拿值setTiomeFun2里面的值"));
         }, 3000);
       });
     },
     setTiomeFun2() {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         let value = [];
         liandong().then(res => {
           res.data.forEach(ele => {
@@ -145,6 +145,6 @@ export default {
     }
   }
 };
-</script>
+</script> -->
 
 <style></style>

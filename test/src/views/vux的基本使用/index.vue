@@ -2,6 +2,10 @@
   <!-- 
 	   获取vuex里面的值方式   : 	先引入   mapState 
 			在 computed 里面拿到 vuex 里面的值 然后就可以直接使用了 
+			
+			
+			调用 模块  Longin 里面的 ADDMENU  传值  router   过去
+			store.commit("Longin/ADDMENU", router); 
 	 -->
   <div>
     <div>vuex的一些基本使用</div>
@@ -23,7 +27,7 @@
 </template>
 
 <script>
-import store from "@/store/index.js";
+// import store from "@/store/index.js";
 import { mapState, mapMutations, mapGetters } from "vuex"; //方法一
 
 import childer from "./childer.vue"; //方法二

@@ -1,31 +1,26 @@
 <template>
   <div style="height: 100%">
     <el-table
+      v-loading="options.operates"
       ref="multipleTable"
-      :data="
-        list.slice(
-          (pagination.currentPage - 1) * pagination.pageSize,
-          pagination.currentPage * pagination.pageSize
-        )
-      "
+      :id="id"
+      :data="list"
       :row-class-name="tableRowClassName"
       :row-style="listTableRow"
       :row-key="getRowKeys"
       :header-cell-style="listTableHeader"
       :cell-style="listTableCell"
       :height="options.height"
+      :highlight-current-row="options.highlightCurrentRow"
       style="width: 100%;"
       border
       @cell-click="handlerCellClick"
       @selection-change="handleSelectionChange"
       @row-dblclick="handelRowdblClick"
+      @row-click="handelRowClick"
       @select="checkboxSelectChange"
       @select-all="checkAllChange"
-      @row-click="handelRowClick"
     >
-      <!-- 
-     
-	   -->
       <!--复选框start-->
       <el-table-column
         v-if="options.multiSelect === true"
@@ -64,6 +59,7 @@
               <template v-for="(btn, key) in column.items">
                 <template v-if="btn.rendererText(scope.row, column)">
                   <el-button
+                    v-button
                     :key="btn.id"
                     @click.native.prevent="btn.handler(key, scope)"
                   >
@@ -103,8 +99,8 @@
         <template slot-scope="scope">
           <div class="operate-group">
             <template v-for="(btn, key) in operates.list">
-              <!-- 按钮没有隐藏  并且不是单选 -->
               <el-button
+                v-button
                 v-if="!btn.hidden && !(btn.label === 'radio')"
                 :key="btn.id"
                 :disabled="btn.disabled"
@@ -113,8 +109,8 @@
               ><span
                 v-if="key < operates.list.length - 1"
                 class="segmentation"
-              ></span>
-              <el-radio
+              ></span
+              ><el-radio
                 v-if="!btn.hidden && btn.label === 'radio'"
                 :key="btn.id"
                 v-model="radio"
@@ -147,7 +143,7 @@
 </template>
 
 <script>
-// import bus from '@/views/layout/bus';
+import bus from "@/views/layout/bus";
 const _pageArray = [10, 20, 30, 40, 50, 100]; // 每页展示条数的控制集合
 export default {
   name: "Tables",
@@ -185,6 +181,7 @@ export default {
         return {
           height: "calc(100% - 40px)",
           loading: false,
+          highlightCurrentRow: true,
           multiSelect: true,
           filterOptions: []
         };
@@ -230,8 +227,6 @@ export default {
   },
   data() {
     return {
-      handelRowClickNum: 0,
-      handelRowClickTime: null,
       defaultRowColor: "",
       tableCurrentPagination: {
         hidden: false,
@@ -255,13 +250,13 @@ export default {
     };
   },
   mounted() {
-    // bus.$on('cleanCheckbox', () => {
-    //   this.$refs.multipleTable.clearSelection();
-    //   // delmul.forEach(row => {
-    //   //   this.$refs.multipleTable.toggleRowSelection(row, false);
-    //   //   console.log('delmul', delmul);
-    //   // });
-    // });
+    bus.$on("cleanCheckbox", () => {
+      this.$refs.multipleTable.clearSelection();
+      // delmul.forEach(row => {
+      //   this.$refs.multipleTable.toggleRowSelection(row, false);
+      //   console.log('delmul', delmul);
+      // });
+    });
     // 判断是否需要分页
     if (this.pagination && !this.pagination.pageSize) {
       this.pagination.pageArray = _pageArray;
@@ -292,53 +287,114 @@ export default {
     },
     // 切换每页显示的数量
     handleSizeChange(size) {
-      console.log(1111);
       if (this.pagination) {
         this.tableCurrentPagination.currentPage = 1;
         this.tableCurrentPagination.pageSize = size;
+        this.$emit("handleSizeChange", this.tableCurrentPagination);
+        if (typeof this.$parent.reload === "function") {
+          this.$parent.reload();
+        } else if (typeof this.$parent.$parent.reload === "function") {
+          this.$parent.$parent.reload();
+        } else if (typeof this.$parent.$parent.$parent.reload === "function") {
+          this.$parent.$parent.$parent.reload();
+        }
       }
     },
     // 跳转
     handleCurrentChange(val) {
       if (this.pagination) {
         this.tableCurrentPagination.currentPage = val;
+        this.$emit("handleCurrentChange", this.tableCurrentPagination);
+        if (typeof this.$parent.reload === "function") {
+          this.$parent.reload();
+        } else if (typeof this.$parent.$parent.reload === "function") {
+          this.$parent.$parent.reload();
+        } else if (typeof this.$parent.$parent.$parent.reload === "function") {
+          this.$parent.$parent.$parent.reload();
+        }
       }
     },
     // 上一页
     handlePreClick(val) {
       if (this.pagination) {
         this.tableCurrentPagination.currentPage = val;
+        this.$emit("handlePreClick", this.tableCurrentPagination);
+        if (typeof this.$parent.reload === "function") {
+          this.radio = "";
+          this.$parent.reload();
+        } else if (typeof this.$parent.$parent.reload === "function") {
+          this.radio = "";
+          this.$parent.$parent.reload();
+        } else if (typeof this.$parent.$parent.$parent.reload === "function") {
+          this.radio = "";
+          this.$parent.$parent.$parent.reload();
+        }
       }
     },
     // 下一页
     handleNextClick(val) {
       if (this.pagination) {
         this.tableCurrentPagination.currentPage = val;
+        this.$emit("handleNextClick", this.tableCurrentPagination);
+        if (typeof this.$parent.reload === "function") {
+          this.radio = "";
+          this.$parent.reload();
+        } else if (typeof this.$parent.$parent.reload === "function") {
+          this.radio = "";
+          this.$parent.$parent.reload();
+        } else if (typeof this.$parent.$parent.$parent.reload === "function") {
+          this.radio = "";
+          this.$parent.$parent.$parent.reload();
+        }
       }
     },
     // 多行选中
     handleSelectionChange(val) {
       console.log("val:", val);
-      // this.multipleSelection = val;
-      // this.$emit('handleSelectionChange', val);
+      this.multipleSelection = val;
+      this.$emit("handleSelectionChange", val);
     },
     // 单击某行操作
     handelRowClick(row, event, column) {
-      this.handelRowClickNum++;
-      //如果用户是双击  那么不执行单机操作
-      this.handelRowClickTime = setTimeout(() => {
-        if (this.handelRowClickNum == 1) {
-          // 单机方法写在这里；
-
-          console.log("我只点击了一次");
-          this.handelRowClickTime = null;
+      // 单击的列如果是复选框列或者操作列，则不改变复选框状态
+      if (
+        !column ||
+        column.type === "selection" ||
+        column.columnKey === "operation"
+      ) {
+        return;
+      } else {
+        if (this.options.multiSelect === true) {
+          // 单击列的时候改变复选框状态
+          this.$refs.multipleTable.toggleRowSelection(row);
+        } else if (!this.options.multiSelect) {
+          // 单击列改变单选框状态；
+          this.radio = this.list.indexOf(row);
         }
-        this.handelRowClickNum = 0;
-      }, 300);
+        const value = {
+          row: row,
+          event: event,
+          column: column
+        };
+        this.$emit("row-click", value);
+      }
     },
     // 双击某行操作
     handelRowdblClick(row, event, column) {
-      console.log(row, event, column, "双击", 1111222);
+      if (
+        !column ||
+        column.type === "selection" ||
+        column.columnKey === "operation"
+      ) {
+        return;
+      } else {
+        const value = {
+          row: row,
+          event: event,
+          column: column
+        };
+        this.$emit("row-dblclick", value);
+      }
     },
     // 手动勾选复选框；
     checkboxSelectChange(selection, row) {
@@ -394,19 +450,19 @@ export default {
                   background-color: #ffffcd !important;`;
         }
       }
-      // if (rowIndex % 2 === 0) {
-      //   return `background-color: #fafafa !important;
-      //           font-size: 18px;
-      //           height:50px;
-      //           color:#424f57 !important;
-      //           font-weight:normal;`;
-      // } else if (rowIndex % 2 === 1) {
-      //   return `background-color: #e6e6e6 !important;
-      //           font-size: 18px;
-      //           height:50px;
-      //           color:#424f57 !important;
-      //           font-weight:normal;`;
-      // }
+      if (rowIndex % 2 === 0) {
+        return `background-color: #fafafa !important;
+                font-size: 18px;
+                height:50px;
+                color:#424f57 !important;
+                font-weight:normal;`;
+      } else if (rowIndex % 2 === 1) {
+        return `background-color: #e6e6e6 !important;
+                font-size: 18px;
+                height:50px;
+                color:#424f57 !important;
+                font-weight:normal;`;
+      }
     },
     tableRowClassName({ row, rowIndex }) {
       // console.log(row,'');
@@ -416,19 +472,88 @@ export default {
       return "";
     },
     listTableCell({ row, column, rowIndex, columnIndex }) {
-      // if (rowIndex % 2 === 0) {
-      //   return `background-color: #fff ;
-      //           font-size: 18px;
-      //           height:50px;
-      //           color:#424f57 ;
-      //           font-weight:normal;`;
-      // } else if (rowIndex % 2 === 1) {
-      //   return `background-color: #F8F8F9;
-      //           font-size: 18px;
-      //           height:50px;
-      //           color:#424f57 ;
-      //           font-weight:normal;`;
-      // }
+      if (rowIndex % 2 === 0) {
+        if (
+          row.eventStatus == "未处置" ||
+          row.eventStatus == "未处理" ||
+          row.eventStatus == "待办"
+        ) {
+          return "font-weight: bold !important; background-color: #fff ;";
+        } else if (
+          columnIndex == 6 &&
+          row.eventStatus == "处理中" &&
+          column.label === "事件状态"
+        ) {
+          return 'color:#2D8CF0 !important;background-color: #fff ;"';
+        } else if (
+          columnIndex == 6 &&
+          row.eventStatus == "完成" &&
+          column.label === "事件状态"
+        ) {
+          return 'color:green !important;background-color: #fff ;"';
+        } else if (
+          columnIndex == 6 &&
+          row.eventStatus == "退报" &&
+          column.label === "事件状态"
+        ) {
+          return 'color:red !important;background-color: #fff ;"';
+        } else if (
+          columnIndex == 5 &&
+          row.eventStatus == "退报" &&
+          column.label === "事件状态"
+        ) {
+          return 'color:red !important;background-color: #fff ;"';
+        } else if (
+          columnIndex == 5 &&
+          row.eventStatus == "处理中" &&
+          column.label === "事件状态"
+        ) {
+          return 'color:#2D8CF0 !important;background-color: #fff ;"';
+        }
+      } else if (rowIndex % 2 === 1) {
+        if (
+          row.eventStatus == "未处置" ||
+          row.eventStatus == "未处理" ||
+          row.eventStatus == "待办"
+        ) {
+          return "font-weight: bold !important;background-color: #F8F8F9;";
+        } else if (
+          columnIndex == 6 &&
+          row.eventStatus == "处理中" &&
+          column.label === "事件状态"
+        ) {
+          return "color:#2D8CF0 !important;background-color: #F8F8F9;";
+        } else if (
+          columnIndex == 6 &&
+          row.eventStatus == "完成" &&
+          column.label === "事件状态"
+        ) {
+          return "color:green !important;background-color: #F8F8F9;";
+        } else if (
+          columnIndex == 6 &&
+          row.eventStatus == "退报" &&
+          column.label === "事件状态"
+        ) {
+          return "color:red !important;background-color: #F8F8F9;";
+        } else if (
+          columnIndex == 5 &&
+          row.eventStatus == "退报" &&
+          column.label === "事件状态"
+        ) {
+          return "color:red !important;background-color: #F8F8F9;";
+        } else if (
+          columnIndex == 5 &&
+          row.eventStatus == "处理中" &&
+          column.label === "事件状态"
+        ) {
+          return "color:#2D8CF0 !important;background-color: #F8F8F9;";
+        }
+      }
+      if (rowIndex % 2 === 0) {
+        return `background-color: #fff ; `;
+      } else if (rowIndex % 2 === 1) {
+        return `background-color: #F8F8F9; `;
+      }
       if (
         this.options.hasOwnProperty("changeCellCss") &&
         this.options.changeCellCss
@@ -474,11 +599,11 @@ export default {
         const boldStyle = this.options.boldStyle;
         if (Number(row[boldStyle[0]]) === boldStyle[1]) {
           /* if (row.originalGudEvnId && row.fromFlag === '1') {
-						  return `color:#5f89bf; !important;
-						          font-weight:bold; !important`;
-						} else {
-						  return `font-weight:bold; !important`;
-						}*/
+            return `color:#5f89bf; !important;
+                    font-weight:bold; !important`;
+          } else {
+            return `font-weight:bold; !important`;
+          }*/
           return `font-weight:bold; !important`;
         }
       } else if (
@@ -496,19 +621,19 @@ export default {
                 white-space: nowrap
                 text-overflow: ellipsis;`;
       }
-      // if (rowIndex % 2 === 0) {
-      //   return `background-color: #fff !important;
-      //           font-size: 18px;
-      //           height:50px;
-      //           color:#424f57 !important;
-      //           font-weight:normal;`;
-      // } else if (rowIndex % 2 === 1) {
-      //   return `background-color: #F1F1F1 !important;
-      //           font-size: 18px;
-      //           height:50px;
-      //           color:#424f57 !important;
-      //           font-weight:normal;`;
-      // }
+      if (rowIndex % 2 === 0) {
+        return `background-color: #fff !important;
+	            font-size: 18px;
+	            height:50px;
+	            color:#424f57 !important;
+	            font-weight:normal;`;
+      } else if (rowIndex % 2 === 1) {
+        return `background-color: #F1F1F1 !important;
+	            font-size: 18px;
+	            height:50px;
+	            color:#424f57 !important;
+	            font-weight:normal;`;
+      }
     }
   }
 };
@@ -518,19 +643,36 @@ export default {
 .el-table tr {
   height: 50px;
 }
-
 .el-table td {
   text-align: center;
 }
-
-.el-table tbody tr:hover > td {
-  background-color: #ccc !important;
-}
-
 .operate-group .el-button {
   background-color: rgba(0, 0, 0, 0) !important;
   border: none;
   font-size: 16px;
   color: #2d8cf0 !important;
 }
+.cell,
+.el-tooltip button {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+/* .operate-group .el-button {
+    background-color: rgba(0,0,0,0) !important;
+    border: 0 !important;
+    font-size: 18px;
+    color: #409eff !important;
+    text-decoration:underline;
+    padding: 0 5px;
+	background-color: none !important;
+    border-radius: none !important;
+    border: 1px solid #fff !important;
+  } */
+/* .el-table .delete-row{
+    font-size: 18px;
+    height:42px;
+    color:#424f57 !important;
+    font-weight:normal;
+    background-color: #ffffcd !important;
+  } */
 </style>
+s

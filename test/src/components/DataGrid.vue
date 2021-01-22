@@ -12,7 +12,6 @@
 	@row-click  			单击某行操作
  -->
 <template>
-  <!-- -->
   <div style="height: 100%">
     <el-table
       :data="
@@ -46,7 +45,7 @@
         style="width: 55px;"
       />
       <!--数据列start-->
-      <template v-for="(column, index) in columns">
+      <template v-for="column in columns">
         <el-table-column
           v-if="!column.hidden"
           :key="column.label"
@@ -58,18 +57,14 @@
         >
           <template slot-scope="scope">
             <template>
-              <!-- 测试图片 -->
-              <img
-                v-if="column.label == '姓名' && scope.row.name === '1王小虎'"
-                src="../assets/xiao.jpg"
-                style="width: 30px;height: 30px;"
-              />
               <span>{{ scope.row[column.prop] }}</span>
+              <!-- 在某一行增加  某些提示时可以使用  暂时不使用 -->
+              <!-- <span v-if="column.label === '时间'" style="color:red;">我是提醒字段</span> -->
             </template>
           </template>
         </el-table-column>
       </template>
-      <!--数据列end-->
+      <!-- 操作栏按钮 -->
       <el-table-column
         v-if="!operates.hidden"
         ref="fixedColumn"
@@ -80,40 +75,17 @@
       >
         <template slot-scope="scope">
           <div class="operate-group">
-            <!-- 
-							正常时使用这个
-						 -->
-            <!-- <template v-for="(btn, key) in operates.list">
-							<el-button :key="btn.id" :disabled="btn.disabled"
-							 @click.native.prevent.stop="btn.method(key,scope)">{{ btn.label }}</el-button><span v-if="key < operates.list.length-1"
-							 class="segmentation"></span>
-						</template> -->
-
-            <!-- 
-							这个有判断    有的按键是否显示
-						 -->
             <template v-for="(btn, key) in operates.list">
-              <!-- 按钮没有隐藏  -->
               <el-button
-                v-if="
-                  (scope.row.name == '1王小虎' && btn.label !== '编辑') ||
-                    (scope.row.name == '4王小虎' && btn.label !== '查看') ||
-                    (scope.row.name !== '1王小虎' &&
-                      scope.row.name !== '4王小虎')
-                "
                 :key="btn.id"
                 :disabled="btn.disabled"
-                @click.native.prevent.stop="btn.method(key, scope)"
+                @click.native.prevent.stop="btn.method(scope, key)"
                 >{{ btn.label }}</el-button
-              ><span
-                v-if="key < operates.list.length - 1"
-                class="segmentation"
-              ></span>
+              >
             </template>
           </div>
         </template>
       </el-table-column>
-      <!--操作列end-->
     </el-table>
     <!--分页start-->
     <el-pagination
@@ -241,9 +213,9 @@ export default {
       this.multipleSelection = val;
       console.log("val:", this.multipleSelection);
     },
-    // 单击某行操作
-    handelRowClick(row, event, column) {
-      console.log("我只点击了一次");
+    // 单击某行操作	row, event, column   有3个参数可以使用
+    handelRowClick() {
+      // console.log(row, event, column, "我只点击了一次");
     },
     // 手动勾选复选框；
     checkboxSelectChange(selection, row) {
@@ -265,19 +237,21 @@ export default {
       };
       this.$emit("handlerCellClick", value);
     },
-    // 头部样式
-    listTableHeader({ row, column, rowIndex }) {
+    // 头部样式			{ row, column, rowIndex }
+    listTableHeader() {
       return `padding:0px;
-					font-size:18px;
-					font-weight:normal;
-					height:44px;
-					background:#123563;
-					text-align:center ;
-					white-space: nowrap;
-					color:#fff;
-					text-overflow: ellipsis;`;
+      font-size:18px;
+      font-weight:normal;
+      height:44px;
+      background:#123563;
+      text-align:center ;
+      white-space: nowrap;
+      color:#fff;
+      text-overflow: ellipsis;`;
     },
-    listTableRow({ row, rowIndex }) {
+    //  改变某一行样式			设置 style的样式
+    listTableRow({ rowIndex }) {
+      // 定义公共样式
       let styleJson = {
         "font-size": "18px",
         height: "50px",
@@ -285,20 +259,30 @@ export default {
         "font-weight": "normal"
       };
       if (rowIndex % 2 === 0) {
+        // 单数行背景颜色为			#fafafa
         let styleJson1 = { "background-color": "#fafafa" };
         styleJson = { ...styleJson1, ...styleJson };
         return styleJson;
       } else if (rowIndex % 2 === 1) {
+        // 双行背景颜色为			#f2f2f2
         let styleJson2 = { "background-Color": "#f2f2f2" };
         styleJson = { ...styleJson2, ...styleJson };
         return styleJson;
       }
     },
-    tableRowClassName({ row, rowIndex }) {},
-    listTableCell({ row, column, rowIndex, columnIndex }) {
-      return `
-					
-				`;
+    // 设置某行样式		设置 class名字  在定义的样式			可以设置 {row,rowIndex}两个参数
+    tableRowClassName() {
+      // console.log(rowIndex, "row, rowIndex");
+      return "newColor";
+    },
+    // 可以设置某一个单元格里面的样式		{ row, column, rowIndex, columnIndex }   参数
+    listTableCell() {
+      // console.log(row, column, rowIndex, columnIndex);
+      // if (rowIndex === 0 && columnIndex === 1) {
+      //   return `font-size:12px;`;
+      // } else {
+      //   return "";
+      // }
     }
   }
 };
@@ -310,10 +294,16 @@ export default {
 		background-color: #ccc !important;
 	} */
 // 操作栏    按钮样式
+
 .operate-group .el-button {
   background-color: rgba(0, 0, 0, 0) !important;
   border: none;
   font-size: 16px;
   color: #2d8cf0 !important;
 }
+</style>
+<style lang="scss">
+// .el-table .newColor {
+//   color: red !important;
+// }
 </style>

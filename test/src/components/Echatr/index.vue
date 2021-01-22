@@ -14,12 +14,6 @@ props里面的值:
 							如果为	axisLabel:incline 那么	x轴倾斜显示
 							如果为	number类型   那么   数字是几 x轴一行多少显示多少个 例如 axisLabel:1 那么1行显示 1 个
 				title		标题  													可以没有
-					title的传参方式如下
-					 title: {
-					   text: "天气情况统计",
-					  subtext: "虚构数据",
-					   left: "center"
-					 },
 	 */
 export default {
   props: {
@@ -87,7 +81,6 @@ export default {
   methods: {
     //判断没有初始化
     initChart() {
-      console.log(111111111111);
       this.initChartData();
       if (this.echart) {
         //有初始化  使用刚指定的配置项和数据显示图表
@@ -161,19 +154,9 @@ export default {
         }
         // 是否显示标题
         this.chartTitle(this.axiosOption);
-        console.log(
-          this.axiosOption.xAxis.axisLabel,
-          "this.axiosOption.xAxis.axisLabel "
-        );
+        // console.log(this.axiosOption.xAxis.axisLabel);
       } else {
         // 没有坐标值
-        console.log(
-          this.normalOption,
-          "this.normalOption111111111111111111111111"
-        );
-        // this.normalOption.series = this.chartData.series;
-        // this.normalOption.legend = this.chartData.legend;
-        // this.normalOption.tooltip = this.chartData.tooltip;
         this.normalOption = this.chartData;
         this.chartTitle(this.normalOption);
       }
@@ -184,7 +167,6 @@ export default {
       }
     },
     resizeChart() {
-      console.log("调用");
       this.echart ? this.echart.resize() : "";
     }
   }
